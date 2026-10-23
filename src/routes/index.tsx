@@ -133,7 +133,10 @@ function HomePage() {
               </span>
               <span className="line">
                 <span>
-                  next&nbsp;<em>chapter</em>
+                  next&nbsp;
+                  <i>
+                    <em>chapter</em>
+                  </i>
                 </span>
               </span>
               <span className="line">
@@ -221,7 +224,10 @@ function HomePage() {
               <h2>
                 A perfect investment surrounding Satara's
                 <br />
-                <em>upcoming</em> IT Tower Projects!
+                <em>
+                  <i>upcoming</i>
+                </em>{" "}
+                IT Tower Projects!
               </h2>
               <br />
               <h3>
