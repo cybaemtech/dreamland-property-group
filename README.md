@@ -26,16 +26,6 @@ Do not leave forms or integrations pretending to work. Clearly identify anything
 
 Execution: First establish the complete sitemap and reusable design system, then build the homepage and all three business journeys with their detail-page templates. Use the uploaded documents as the source of truth. Deliver a cohesive, functional website—not just a landing page or static mockup.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/38ed61b3-2ba4-4ec0-9fef-16ffa54b459a).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
@@ -46,3 +36,21 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Deployment on Netlify
+
+This project uses TanStack Start with the official `@netlify/vite-plugin-tanstack-start` plugin for full-stack SSR and API route hosting.
+
+1. **Push to Git**: Push your latest code to GitHub, GitLab, or Bitbucket.
+2. **Import into Netlify**: Select **Add new site** > **Import an existing project**.
+3. **Build settings** (auto-configured via `netlify.toml`):
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist/client`
+4. **Environment Variables**: Add these in **Site configuration > Environment variables**:
+   - `SUPABASE_URL`: Your Supabase project URL
+   - `SUPABASE_PUBLISHABLE_KEY`: Your Supabase publishable key
+   - `VITE_SUPABASE_URL`: Your Supabase project URL (client-side)
+   - `VITE_SUPABASE_PUBLISHABLE_KEY`: Your Supabase publishable key (client-side)
+   - `SUPABASE_SERVICE_ROLE_KEY`: (Optional) For server-side admin functions
+   - `DATABASE_URL`: (Optional) If running Drizzle database migrations
+
