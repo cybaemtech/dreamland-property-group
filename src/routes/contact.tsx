@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow, ReviewNotice, SectionHeading } from "@/components/bits";
+import { LeadForm } from "@/components/lead-form";
 import { contactForm } from "@/content/forms";
 
 const ROUTES = [

@@ -3,6 +3,7 @@ import journeyImage from "@/assets/journey-properties.jpg";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { CTAButton, Eyebrow, FaqList, ReviewNotice, SectionHeading } from "@/components/bits";
+import { LeadForm } from "@/components/lead-form";
 import { partnerForm } from "@/content/forms";
 import { partnerFaqs } from "@/content/faqs";
 
