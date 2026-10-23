@@ -83,18 +83,19 @@ function HomePage() {
             <span className="eyebrow">Rooted in Satara. Connected to new opportunities.</span>
             <h1 id="hero-title">
               <span className="line">
-                <span>Property</span>
+                <span>Satara's</span>
               </span>
               <span className="line">
-                <span>opportunities</span>
+                <span>next&nbsp;Chapter</span>
               </span>
               <span className="line">
-                <span>deserve <em>clarity.</em></span>
+                <span><em>chapter</em> starts here!</span>
               </span>
             </h1>
             <p className="hero-description">
-              From homes and commercial spaces to land opportunities and stalled-project revival, Dreamland Developers
-              brings local market understanding and a structured approach to real-estate execution.
+              Explore Satara property opportunities from wherever you are&nbsp; whether you are considering a home,
+              commercial space or a property investment. Request current project information, speak with the team
+              virtually and plan a guided visit when an opportunity fits your needs.
             </p>
             <div className="hero-actions">
               <CTAButton to="/properties">Explore Properties</CTAButton>
