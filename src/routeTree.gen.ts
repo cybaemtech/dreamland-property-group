@@ -10,6 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ChannelPartnersRouteImport } from './routes/channel-partners'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LandIndustrialRouteImport } from './routes/land-industrial'
 import { Route as ProjectRevivalRouteImport } from './routes/project-revival'
 import { Route as PropertiesRouteImport } from './routes/properties'
@@ -21,6 +24,21 @@ import { Route as ProjectRevivalCaseStudiesSlugRouteImport } from './routes/proj
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChannelPartnersRoute = ChannelPartnersRouteImport.update({
+  id: '/channel-partners',
+  path: '/channel-partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LandIndustrialRoute = LandIndustrialRouteImport.update({
@@ -62,6 +80,9 @@ const ProjectRevivalCaseStudiesSlugRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/channel-partners': typeof ChannelPartnersRoute
+  '/contact': typeof ContactRoute
   '/land-industrial': typeof LandIndustrialRouteWithChildren
   '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
@@ -72,6 +93,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/channel-partners': typeof ChannelPartnersRoute
+  '/contact': typeof ContactRoute
   '/land-industrial': typeof LandIndustrialRouteWithChildren
   '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
@@ -83,6 +107,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/channel-partners': typeof ChannelPartnersRoute
+  '/contact': typeof ContactRoute
   '/land-industrial': typeof LandIndustrialRouteWithChildren
   '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
@@ -95,6 +122,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/channel-partners'
+    | '/contact'
     | '/land-industrial'
     | '/project-revival'
     | '/properties'
@@ -105,6 +135,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/channel-partners'
+    | '/contact'
     | '/land-industrial'
     | '/project-revival'
     | '/properties'
@@ -115,6 +148,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/channel-partners'
+    | '/contact'
     | '/land-industrial'
     | '/project-revival'
     | '/properties'
@@ -126,6 +162,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ChannelPartnersRoute: typeof ChannelPartnersRoute
+  ContactRoute: typeof ContactRoute
   LandIndustrialRoute: typeof LandIndustrialRouteWithChildren
   ProjectRevivalRoute: typeof ProjectRevivalRouteWithChildren
   PropertiesRoute: typeof PropertiesRouteWithChildren
@@ -139,6 +178,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/channel-partners': {
+      id: '/channel-partners'
+      path: '/channel-partners'
+      fullPath: '/channel-partners'
+      preLoaderRoute: typeof ChannelPartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/land-industrial': {
@@ -231,6 +291,9 @@ const PropertiesRouteWithChildren = PropertiesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ChannelPartnersRoute: ChannelPartnersRoute,
+  ContactRoute: ContactRoute,
   LandIndustrialRoute: LandIndustrialRouteWithChildren,
   ProjectRevivalRoute: ProjectRevivalRouteWithChildren,
   PropertiesRoute: PropertiesRouteWithChildren,

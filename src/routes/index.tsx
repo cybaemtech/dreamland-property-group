@@ -455,5 +455,3 @@ function HomePage() {
     </main>
   );
 }
-
-export { DiagonalIcon };
