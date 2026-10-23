@@ -44,7 +44,7 @@ export function getAttribution(): AttributionData {
   }
   const params = new URLSearchParams(window.location.search);
   const live: AttributionData = {};
-  for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"]) {
+  for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"] as const) {
     const v = params.get(key);
     if (v) live[key] = v.slice(0, 120);
   }
@@ -58,7 +58,7 @@ export function captureAttribution(): void {
     if (sessionStorage.getItem(ATTR_KEY)) return;
     const params = new URLSearchParams(window.location.search);
     const data: AttributionData = {};
-    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"]) {
+    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"] as const) {
       const v = params.get(key);
       if (v) data[key] = v.slice(0, 120);
     }
