@@ -5,6 +5,7 @@ import journeyProperties from "@/assets/journey-properties.jpg";
 import journeyRevival from "@/assets/journey-revival.jpg";
 import journeyLand from "@/assets/journey-land.jpg";
 import landImage from "@/assets/land-parcel.jpg";
+import itParkArt from "@/assets/it-park-line-art.png";
 import { Reveal } from "@/components/reveal";
 import { CTAButton, CtaBand, EmptyState, Eyebrow, IllustrativeNote, TextLink } from "@/components/bits";
 import { PropertyCard } from "@/components/cards";
@@ -199,6 +200,15 @@ function HomePage() {
 
       {/* ============ Statement ============ */}
       <section className="statement" id="intro">
+        <img
+          src={itParkArt}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          width={1920}
+          height={1024}
+          className="statement-art"
+        />
         <div className="container statement-grid">
           <aside className="statement-aside">
             <Reveal>
@@ -234,6 +244,38 @@ function HomePage() {
               <h3>
                 Real-estate decisions need <em>more than a promise.</em>
               </h3>
+              <div className="news-strip">
+                <div className="news-strip-head">
+                  <span>Independent news coverage</span>
+                </div>
+                <div className="news-cards">
+                  <a
+                    className="news-card"
+                    href="https://pudhari.news/maharashtra/satara/satara-it-park-land-transfer-in-final-stages-employment-boost-dc95"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="news-card-source">Pudhari News</span>
+                    <h3>Satara IT Park land transfer in final stages</h3>
+                    <p>
+                      Reporting on the land-transfer process and the employment activity anticipated around the IT
+                      Park.
+                    </p>
+                    <span className="text-link">Read article ↗</span>
+                  </a>
+                  <a
+                    className="news-card"
+                    href="https://www.esakal.com/satara/maharashtra-cabinet-approves-satara-it-park-42-hectares-transferred-to-midc-sdj87"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="news-card-source">Sakal</span>
+                    <h3>Maharashtra cabinet approves Satara IT Park</h3>
+                    <p>42 hectares earmarked for MIDC, with new employment opportunities reported for the region.</p>
+                    <span className="text-link">Read article ↗</span>
+                  </a>
+                </div>
+              </div>
               <div className="statement-bottom">
                 <p>
                   Dreamland works across property sales, selected land opportunities and stalled-project recovery. Our
