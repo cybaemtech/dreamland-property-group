@@ -126,7 +126,7 @@ function HomePage() {
         <div className="hero-grid" aria-hidden="true"></div>
         <div className="container hero-inner">
           <div className="hero-content">
-            <span className="eyebrow">Rooted in Satara. Connected to new opportunities.</span>
+            <span className="eyebrow">SATARA EXPERTISE. FOR PUNE &amp; MUMBAI BUYERS.</span>
             <h1 id="hero-title">
               <span className="line">
                 <span>Satara's</span>
