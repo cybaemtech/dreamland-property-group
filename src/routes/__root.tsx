@@ -1,4 +1,5 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-router";
+import { QueryClient } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
@@ -6,12 +7,16 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  ScriptOnce,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { captureAttribution } from "@/lib/analytics";
 
 function NotFoundComponent() {
   return (
@@ -78,21 +83,39 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Dreamland Developers | Properties, Land & Project Revival in Satara" },
+      {
+        name: "description",
+        content:
+          "Explore residential and commercial property opportunities in Satara, discover land and industrial opportunities, or discuss a stalled real-estate project with Dreamland Developers.",
+      },
+      { property: "og:title", content: "Dreamland Developers | Satara Property Opportunities" },
+      {
+        property: "og:description",
+        content:
+          "Satara roots. A wider buyer horizon. Explore properties, request verified information and plan a guided visit.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        // Enables scroll-reveal transitions before first paint (matches reference site).
+        children: "document.documentElement.classList.add('motion-ready')",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -101,6 +124,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+function ScrollProgress() {
+  useEffect(() => {
+    const line = document.getElementById("progress-line");
+    if (!line) return;
+    let ticking = false;
+    const update = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const amount = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      line.style.width = amount + "%";
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return <div className="progress-line" id="progress-line" aria-hidden="true" />;
+}
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
@@ -108,7 +155,10 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <ScrollProgress />
+        <SiteHeader />
         {children}
+        <SiteFooter />
         <Scripts />
       </body>
     </html>
@@ -117,6 +167,10 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    captureAttribution();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
