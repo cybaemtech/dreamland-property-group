@@ -206,7 +206,10 @@ function HomePage() {
                 <br />
                 <br />
                 <br />
-                Local trust. Wider reach.
+                <h2>
+                  Local trust. <br />
+                  Wider reach.
+                </h2>
               </p>
             </Reveal>
           </aside>
