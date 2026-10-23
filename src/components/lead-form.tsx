@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { getAttribution, track } from "@/lib/analytics";
+import { Button } from "@/components/ui/button";
+import { ArrowIcon } from "@/components/bits";
 
 export interface FieldDef {
   name: string;
@@ -162,9 +164,10 @@ export function LeadForm({
           Submissions are stored securely and reviewed by the Dreamland team. Please do not send passwords,
           sensitive personal data or confidential financial records through website forms.
         </p>
-        <button className="btn btn-gold" type="submit" disabled={status === "sending"}>
+        <Button variant="editorial" size="editorial" type="submit" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : config.submitLabel}
-        </button>
+          <ArrowIcon />
+        </Button>
       </div>
       <div className={`form-message ${status === "ok" ? "ok" : ""} ${status === "err" ? "err" : ""}`} role="status" aria-live="polite">
         {message}
