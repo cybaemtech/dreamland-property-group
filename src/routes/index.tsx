@@ -12,19 +12,65 @@ import { listedProperties } from "@/content/properties";
 import { track, events } from "@/lib/analytics";
 
 const REVIVAL_HOME_STEPS = [
-  { n: "01", tag: "Understand", title: "Assess", body: "Review the background, site condition, construction status, stakeholder map, key documents and immediate concerns." },
-  { n: "02", tag: "Identify", title: "Clarify", body: "Separate confirmed facts from unresolved issues: approvals, title questions, claims, financial information and stakeholder permissions." },
-  { n: "03", tag: "Evaluate", title: "Feasibility", body: "Work with the relevant legal, technical and financial professionals to understand whether a realistic recovery path may exist." },
-  { n: "04", tag: "Coordinate", title: "Align", body: "Where appropriate, facilitate structured discussions with authorised stakeholders and define responsibilities and dependencies." },
-  { n: "05", tag: "Define", title: "Plan", body: "Subject to feasibility and approvals, define the proposed workstreams, milestones, costs, governance and commercial model." },
-  { n: "06", tag: "Progress", title: "Execute", body: "If an engagement proceeds, track agreed milestones and communicate progress through the agreed governance structure." },
+  {
+    n: "01",
+    tag: "Understand",
+    title: "Assess",
+    body: "Review the background, site condition, construction status, stakeholder map, key documents and immediate concerns.",
+  },
+  {
+    n: "02",
+    tag: "Identify",
+    title: "Clarify",
+    body: "Separate confirmed facts from unresolved issues: approvals, title questions, claims, financial information and stakeholder permissions.",
+  },
+  {
+    n: "03",
+    tag: "Evaluate",
+    title: "Feasibility",
+    body: "Work with the relevant legal, technical and financial professionals to understand whether a realistic recovery path may exist.",
+  },
+  {
+    n: "04",
+    tag: "Coordinate",
+    title: "Align",
+    body: "Where appropriate, facilitate structured discussions with authorised stakeholders and define responsibilities and dependencies.",
+  },
+  {
+    n: "05",
+    tag: "Define",
+    title: "Plan",
+    body: "Subject to feasibility and approvals, define the proposed workstreams, milestones, costs, governance and commercial model.",
+  },
+  {
+    n: "06",
+    tag: "Progress",
+    title: "Execute",
+    body: "If an engagement proceeds, track agreed milestones and communicate progress through the agreed governance structure.",
+  },
 ];
 
 const BUYER_STEPS = [
-  { n: "01", title: "Share your requirements.", body: "Tell us the property type, preferred location, approximate budget and intended use." },
-  { n: "02", title: "Review the information.", body: "Our team can share approved photographs, specifications, available documents and current pricing information." },
-  { n: "03", title: "Speak with the team.", body: "Discuss your questions and arrange a virtual walkthrough where available." },
-  { n: "04", title: "Plan a site visit.", body: "Visit the property, inspect its actual condition and complete your own due diligence before making a decision." },
+  {
+    n: "01",
+    title: "Share your requirements.",
+    body: "Tell us the property type, preferred location, approximate budget and intended use.",
+  },
+  {
+    n: "02",
+    title: "Review the information.",
+    body: "Our team can share approved photographs, specifications, available documents and current pricing information.",
+  },
+  {
+    n: "03",
+    title: "Speak with the team.",
+    body: "Discuss your questions and arrange a virtual walkthrough where available.",
+  },
+  {
+    n: "04",
+    title: "Plan a site visit.",
+    body: "Visit the property, inspect its actual condition and complete your own due diligence before making a decision.",
+  },
 ];
 
 export const Route = createFileRoute("/")({
@@ -86,10 +132,12 @@ function HomePage() {
                 <span>Satara's</span>
               </span>
               <span className="line">
-                <span>next&nbsp;chapter</span>
+                <span>
+                  next&nbsp;<em>chapter</em>
+                </span>
               </span>
               <span className="line">
-                <span><em>chapter</em> starts here!</span>
+                <span>starts here!</span>
               </span>
             </h1>
             <p className="hero-description">
@@ -153,8 +201,8 @@ function HomePage() {
             <Reveal>
               <Eyebrow>Satara roots. Wider reach.</Eyebrow>
               <p className="statement-note">
-                Exploring Satara from Pune or Mumbai? Start with a virtual conversation, request the available
-                property information, and plan a guided site visit when you are ready.
+                Exploring Satara from Pune or Mumbai? Start with a virtual conversation, request the available property
+                information, and plan a guided site visit when you are ready.
               </p>
             </Reveal>
           </aside>
@@ -199,8 +247,18 @@ function HomePage() {
           </div>
           <div className="journey-grid">
             <Reveal delay={1}>
-              <Link to="/properties" className="journey-card" onClick={() => track(events.propertyView, { context: "journey_card" })}>
-                <img src={journeyProperties} alt="Light-filled contemporary residential interior" loading="lazy" width={1024} height={1280} />
+              <Link
+                to="/properties"
+                className="journey-card"
+                onClick={() => track(events.propertyView, { context: "journey_card" })}
+              >
+                <img
+                  src={journeyProperties}
+                  alt="Light-filled contemporary residential interior"
+                  loading="lazy"
+                  width={1024}
+                  height={1280}
+                />
                 <span className="journey-number">01 / Buy in Satara</span>
                 <span className="journey-mark" aria-hidden="true">
                   ↗
@@ -223,7 +281,13 @@ function HomePage() {
             </Reveal>
             <Reveal delay={2}>
               <Link to="/project-revival" className="journey-card">
-                <img src={journeyRevival} alt="Architectural construction structure with strong geometry" loading="lazy" width={1024} height={1280} />
+                <img
+                  src={journeyRevival}
+                  alt="Architectural construction structure with strong geometry"
+                  loading="lazy"
+                  width={1024}
+                  height={1280}
+                />
                 <span className="journey-number">02 / Turnaround</span>
                 <span className="journey-mark" aria-hidden="true">
                   ↗
@@ -245,7 +309,13 @@ function HomePage() {
             </Reveal>
             <Reveal delay={3}>
               <Link to="/land-industrial" className="journey-card">
-                <img src={journeyLand} alt="Expansive open land and green landscape" loading="lazy" width={1024} height={1280} />
+                <img
+                  src={journeyLand}
+                  alt="Expansive open land and green landscape"
+                  loading="lazy"
+                  width={1024}
+                  height={1280}
+                />
                 <span className="journey-number">03 / Land &amp; business</span>
                 <span className="journey-mark" aria-hidden="true">
                   ↗
@@ -382,8 +452,7 @@ function HomePage() {
               <div>
                 <Eyebrow>Dreamland Project Revival</Eyebrow>
                 <h2>
-                  Every stalled project has its own story. The way forward must be{" "}
-                  <em>specific to it.</em>
+                  Every stalled project has its own story. The way forward must be <em>specific to it.</em>
                 </h2>
               </div>
             </Reveal>
@@ -413,7 +482,9 @@ function HomePage() {
             ))}
           </div>
           <div className="revival-foot">
-            <span>Every project is different. Feasibility, legal position and outcomes require independent assessment.</span>
+            <span>
+              Every project is different. Feasibility, legal position and outcomes require independent assessment.
+            </span>
             <span>Project Revival / Dreamland Developers</span>
           </div>
         </div>
@@ -422,7 +493,13 @@ function HomePage() {
       {/* ============ Land band ============ */}
       <section className="land" id="land">
         <div className="land-image">
-          <img src={landImage} alt="Open landscape with land and distant hills — illustrative image" loading="lazy" width={1600} height={1024} />
+          <img
+            src={landImage}
+            alt="Open landscape with land and distant hills — illustrative image"
+            loading="lazy"
+            width={1600}
+            height={1024}
+          />
         </div>
         <div className="container land-content">
           <Reveal>
@@ -434,8 +511,8 @@ function HomePage() {
                 <em>right details.</em>
               </h2>
               <p>
-                For business and land requirements, share the intended use, preferred location and parcel size. The
-                team can then discuss relevant opportunities, access and documentation, subject to individual site
+                For business and land requirements, share the intended use, preferred location and parcel size. The team
+                can then discuss relevant opportunities, access and documentation, subject to individual site
                 verification.
               </p>
               <CTAButton to="/land-industrial">Explore Land Opportunities</CTAButton>
