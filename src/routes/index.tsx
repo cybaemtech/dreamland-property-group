@@ -226,8 +226,9 @@ function HomePage() {
                 <br />
                 <em>
                   <i>upcoming</i>
-                </em>{" "}
-                IT Tower Projects!
+                </em>
+                <br />
+                IT Towers Park!
               </h2>
               <br />
               <h3>
