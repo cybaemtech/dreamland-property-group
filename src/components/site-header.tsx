@@ -1,9 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { DiagonalIcon } from "./bits";
+import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
-  { to: "/properties", label: "Explore Properties" },
+  { to: "/properties", label: "Properties" },
   { to: "/project-revival", label: "Project Revival" },
   { to: "/land-industrial", label: "Land & Industrial" },
   { to: "/about", label: "About" },
@@ -32,6 +33,14 @@ export function SiteHeader() {
     return () => document.body.classList.remove("overflow-hidden");
   }, [open]);
 
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    const closeOnResize = () => { if (window.innerWidth > 1080) setOpen(false); };
+    window.addEventListener("keydown", closeOnEscape);
+    window.addEventListener("resize", closeOnResize);
+    return () => { window.removeEventListener("keydown", closeOnEscape); window.removeEventListener("resize", closeOnResize); };
+  }, []);
+
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="container nav">
@@ -44,7 +53,7 @@ export function SiteHeader() {
             <span>Developers · Property · Possibility</span>
           </span>
         </Link>
-        <nav className={`nav-links ${open ? "open" : ""}`} aria-label="Main navigation">
+        <nav id="nav-links" className={`nav-links ${open ? "open" : ""}`} aria-label="Main navigation">
           {NAV_LINKS.map((link) => (
             <Link key={link.to} to={link.to} className={pathname.startsWith(link.to) ? "active" : ""}>
               {link.label}
@@ -53,11 +62,12 @@ export function SiteHeader() {
           <Link to="/channel-partners" className={pathname.startsWith("/channel-partners") ? "active" : ""}>
             Partner With Us
           </Link>
+          <Link to="/project-revival" className="mobile-project-cta">Discuss a Stalled Project <DiagonalIcon /></Link>
         </nav>
         <Link to="/project-revival" className="nav-cta">
           Discuss a Stalled Project <DiagonalIcon />
         </Link>
-        <button
+        <Button variant="menu" size="editorial"
           className={`menu-toggle ${open ? "active" : ""}`}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-controls="nav-links"
@@ -66,7 +76,7 @@ export function SiteHeader() {
         >
           <span></span>
           <span></span>
-        </button>
+        </Button>
       </div>
     </header>
   );

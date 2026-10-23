@@ -33,6 +33,7 @@ export const Route = createFileRoute("/land-industrial/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: parcel.summary },
         { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [{ rel: "canonical", href: `/land-industrial/${parcel.slug}` }],
     };

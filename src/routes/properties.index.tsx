@@ -27,6 +27,7 @@ export const Route = createFileRoute("/properties/")({
           "Explore residential and commercial properties currently listed by Dreamland Developers. Compare the details that matter, request current availability, and speak with our team.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/properties" }],
   }),

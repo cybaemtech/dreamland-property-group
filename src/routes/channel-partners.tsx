@@ -38,6 +38,7 @@ export const Route = createFileRoute("/channel-partners")({
           "Work with Dreamland Developers as a channel partner: approved marketing materials, verified project information and a clearly defined appointment process.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/channel-partners" }],
   }),

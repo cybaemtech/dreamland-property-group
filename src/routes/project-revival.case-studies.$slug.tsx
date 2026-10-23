@@ -29,6 +29,7 @@ export const Route = createFileRoute("/project-revival/case-studies/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: cs.intro },
         { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [{ rel: "canonical", href: `/project-revival/case-studies/${cs.slug}` }],
     };
