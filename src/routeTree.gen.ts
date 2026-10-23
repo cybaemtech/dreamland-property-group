@@ -10,13 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectRevivalRouteImport } from './routes/project-revival'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 import { Route as ApiPublicEnquiriesRouteImport } from './routes/api/public/enquiries'
+import { Route as ProjectRevivalCaseStudiesSlugRouteImport } from './routes/project-revival.case-studies.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectRevivalRoute = ProjectRevivalRouteImport.update({
+  id: '/project-revival',
+  path: '/project-revival',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PropertiesRoute = PropertiesRouteImport.update({
@@ -34,41 +41,68 @@ const ApiPublicEnquiriesRoute = ApiPublicEnquiriesRouteImport.update({
   path: '/api/public/enquiries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectRevivalCaseStudiesSlugRoute =
+  ProjectRevivalCaseStudiesSlugRouteImport.update({
+    id: '/case-studies/$slug',
+    path: '/case-studies/$slug',
+    getParentRoute: () => ProjectRevivalRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
   '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
+  '/project-revival/case-studies/$slug': typeof ProjectRevivalCaseStudiesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
   '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
+  '/project-revival/case-studies/$slug': typeof ProjectRevivalCaseStudiesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
   '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
+  '/project-revival/case-studies/$slug': typeof ProjectRevivalCaseStudiesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/properties' | '/properties/$slug' | '/api/public/enquiries'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/properties' | '/properties/$slug' | '/api/public/enquiries'
-  id:
-    | '__root__'
+  fullPaths:
     | '/'
+    | '/project-revival'
     | '/properties'
     | '/properties/$slug'
     | '/api/public/enquiries'
+    | '/project-revival/case-studies/$slug'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/project-revival'
+    | '/properties'
+    | '/properties/$slug'
+    | '/api/public/enquiries'
+    | '/project-revival/case-studies/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/project-revival'
+    | '/properties'
+    | '/properties/$slug'
+    | '/api/public/enquiries'
+    | '/project-revival/case-studies/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjectRevivalRoute: typeof ProjectRevivalRouteWithChildren
   PropertiesRoute: typeof PropertiesRouteWithChildren
   ApiPublicEnquiriesRoute: typeof ApiPublicEnquiriesRoute
 }
@@ -80,6 +114,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/project-revival': {
+      id: '/project-revival'
+      path: '/project-revival'
+      fullPath: '/project-revival'
+      preLoaderRoute: typeof ProjectRevivalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/properties': {
@@ -103,8 +144,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicEnquiriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/project-revival/case-studies/$slug': {
+      id: '/project-revival/case-studies/$slug'
+      path: '/case-studies/$slug'
+      fullPath: '/project-revival/case-studies/$slug'
+      preLoaderRoute: typeof ProjectRevivalCaseStudiesSlugRouteImport
+      parentRoute: typeof ProjectRevivalRoute
+    }
   }
 }
+
+interface ProjectRevivalRouteChildren {
+  ProjectRevivalCaseStudiesSlugRoute: typeof ProjectRevivalCaseStudiesSlugRoute
+}
+
+const ProjectRevivalRouteChildren: ProjectRevivalRouteChildren = {
+  ProjectRevivalCaseStudiesSlugRoute: ProjectRevivalCaseStudiesSlugRoute,
+}
+
+const ProjectRevivalRouteWithChildren = ProjectRevivalRoute._addFileChildren(
+  ProjectRevivalRouteChildren,
+)
 
 interface PropertiesRouteChildren {
   PropertiesSlugRoute: typeof PropertiesSlugRoute
@@ -120,6 +180,7 @@ const PropertiesRouteWithChildren = PropertiesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjectRevivalRoute: ProjectRevivalRouteWithChildren,
   PropertiesRoute: PropertiesRouteWithChildren,
   ApiPublicEnquiriesRoute: ApiPublicEnquiriesRoute,
 }
