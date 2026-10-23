@@ -3,6 +3,7 @@ import journeyRevival from "@/assets/journey-revival.jpg";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { CTAButton, Eyebrow, FaqList, ReviewNotice, SectionHeading } from "@/components/bits";
+import { LeadForm } from "@/components/lead-form";
 import { revivalForm } from "@/content/forms";
 import { revivalFaqs } from "@/content/faqs";
 import { publishedCaseStudies } from "@/content/case-studies";
@@ -197,16 +198,13 @@ function RevivalPage() {
               {publishedCaseStudies.map((cs) => (
                 <Reveal key={cs.slug}>
                   <article className="property-card">
-                    <a href={`/project-revival/case-studies/${cs.slug}`} aria-label={`Read case study: ${cs.name}`}>
-                      <div className="property-photo">
-                        <img src={cs.heroImage.src} alt={cs.heroImage.alt} loading="lazy" width={1600} height={1024} />
-                      </div>
+                    <a href={`/project-revival/case-studies/${cs.slug}`} aria-label={`Read case study: ${cs.title}`}>
                       <div className="property-meta">
-                        <span>{cs.location}</span>
+                        <span>Project revival</span>
                         <span>Case study</span>
                       </div>
-                      <h3>{cs.name}</h3>
-                      <p>{cs.summary}</p>
+                      <h3>{cs.title}</h3>
+                      <p>{cs.intro}</p>
                       <span className="text-link">Read the Case Study</span>
                     </a>
                   </article>

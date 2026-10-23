@@ -6,7 +6,7 @@ import journeyRevival from "@/assets/journey-revival.jpg";
 import journeyLand from "@/assets/journey-land.jpg";
 import landImage from "@/assets/land-parcel.jpg";
 import { Reveal } from "@/components/reveal";
-import { CTAButton, CtaBand, DiagonalIcon, EmptyState, Eyebrow, IllustrativeNote, TextLink } from "@/components/bits";
+import { CTAButton, CtaBand, EmptyState, Eyebrow, IllustrativeNote, TextLink } from "@/components/bits";
 import { PropertyCard } from "@/components/cards";
 import { listedProperties } from "@/content/properties";
 import { track, events } from "@/lib/analytics";
@@ -455,5 +455,3 @@ function HomePage() {
     </main>
   );
 }
-
-export { DiagonalIcon };

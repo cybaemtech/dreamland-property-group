@@ -3,6 +3,7 @@ import journeyLand from "@/assets/journey-land.jpg";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { CTAButton, Eyebrow, FaqList, ReviewNotice, SectionHeading } from "@/components/bits";
+import { LeadForm } from "@/components/lead-form";
 import { ParcelCard } from "@/components/cards";
 import { listedParcels } from "@/content/land";
 import { landForm } from "@/content/forms";

@@ -59,8 +59,8 @@ function PropertyDetailPage() {
         image={property.heroImage}
         breadcrumbs={[{ label: "Properties", to: "/properties" }, { label: property.name }]}
         actions={[
-          { label: "Request Current Availability", to: "/properties/$slug", variant: "gold" },
-          { label: "Book a Guided Site Visit", to: "/properties/$slug", variant: "outline" },
+          { label: "Request Current Availability", variant: "gold", anchor: "#enquire" },
+          { label: "Book a Guided Site Visit", variant: "outline", anchor: "#enquire" },
         ]}
       />
 
