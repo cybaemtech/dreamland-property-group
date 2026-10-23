@@ -134,9 +134,9 @@ function HomePage() {
               <span className="line">
                 <span>
                   next&nbsp;
-                  <i>
-                    <em>chapter</em>
-                  </i>
+                  <em>
+                    <i>chapter</i>
+                  </em>
                 </span>
               </span>
               <span className="line">
