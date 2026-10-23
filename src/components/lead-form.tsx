@@ -34,7 +34,16 @@ const CONSENT_TEXT =
  * Attribution (UTM/referrer) is attached automatically; no submission is
  * reported as a lead unless the backend confirms receipt.
  */
-export function LeadForm({ config }: { config: LeadFormConfig }) {
+export function LeadForm({
+  config,
+  prefill,
+  id,
+}: {
+  config: LeadFormConfig;
+  /** Default values applied to matching fields (e.g. the property name). */
+  prefill?: Record<string, string>;
+  id?: string;
+}) {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">("idle");
   const [message, setMessage] = useState("");
 
@@ -86,7 +95,7 @@ export function LeadForm({ config }: { config: LeadFormConfig }) {
   }
 
   return (
-    <form className="enquiry-panel" onSubmit={onSubmit} noValidate={false}>
+    <form className="enquiry-panel" onSubmit={onSubmit} noValidate={false} id={id}>
       <div className="panel-top">
         <h3>{config.panelTitle}</h3>
         <span>{config.panelTag}</span>
@@ -103,9 +112,9 @@ export function LeadForm({ config }: { config: LeadFormConfig }) {
                 id={`fld-${field.name}`}
                 name={field.name}
                 required={field.required}
-                defaultValue=""
+                defaultValue={prefill?.[field.name] ?? ""}
               >
-                <option value="" disabled={field.required}>
+                <option value="" disabled={field.required && !prefill?.[field.name]}>
                   Select an option
                 </option>
                 {(field.options ?? []).map((opt) => (
@@ -119,6 +128,7 @@ export function LeadForm({ config }: { config: LeadFormConfig }) {
                 placeholder={field.placeholder}
                 required={field.required}
                 maxLength={2000}
+                defaultValue={prefill?.[field.name] ?? ""}
               />
             ) : (
               <input
@@ -130,6 +140,7 @@ export function LeadForm({ config }: { config: LeadFormConfig }) {
                 required={field.required}
                 maxLength={field.type === "tel" ? 20 : 200}
                 pattern={field.type === "tel" ? "[0-9+() .-]{8,20}" : undefined}
+                defaultValue={prefill?.[field.name] ?? ""}
               />
             )}
           </div>
