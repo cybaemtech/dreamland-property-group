@@ -219,6 +219,8 @@ function HomePage() {
           <div className="statement-copy">
             <Reveal delay={1}>
               <h2>
+                A perfect investment surrounding next Satara's IT Tower Projects!
+                <br />
                 Real-estate decisions need <em>more than a promise.</em>
               </h2>
               <div className="statement-bottom">
