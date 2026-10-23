@@ -202,21 +202,42 @@ function HomePage() {
       </div>
 
       {/* ============ Statement ============ */}
-      <section className="statement" id="intro">
+      <section className="statement trust-showcase" id="intro" aria-labelledby="trust-title">
+        <img src={itParkArt} alt="" aria-hidden="true" loading="lazy" width={1920} height={1024} className="statement-art" />
         <div className="container statement-grid">
           <aside className="statement-aside">
             <Reveal>
               <Eyebrow>Satara roots. Wider reach.</Eyebrow>
               <p className="statement-note">Exploring Satara from Pune or Mumbai? Start with a virtual conversation, request the available property information, and plan a guided site visit when you are ready.</p>
+              <p className="trust-local"><span>Local<br /> trust.</span><br />Wider<br /> reach.</p>
             </Reveal>
           </aside>
           <div className="statement-copy">
             <Reveal delay={1}>
-              <h2>Local trust. Wider reach.<br /><em>Clearer decisions.</em></h2>
+              <h2 id="trust-title">A perfect investment<br className="trust-desktop-break" /> surrounding Satara's<br className="trust-desktop-break" /> <em>upcoming</em><br />IT Towers Park!</h2>
+              <p className="trust-promise"><span>Real-estate decisions need <em>more than a promise.</em></span></p>
+              <div className="news-strip" id="independent-news">
+                <div className="news-strip-head"><span>Independent News Coverage</span></div>
+                <div className="news-cards">
+                  <a className="news-card" href="https://pudhari.news/maharashtra/satara/satara-it-park-land-transfer-in-final-stages-employment-boost-dc95" target="_blank" rel="noopener noreferrer">
+                    <span className="news-card-source">Pudhari News</span>
+                    <h3>Satara IT Park land transfer in final stages</h3>
+                    <p>Reporting on the land-transfer process and expected local employment</p>
+                    <span className="text-link">Read article</span>
+                  </a>
+                  <a className="news-card" href="https://www.esakal.com/satara/maharashtra-cabinet-approves-satara-it-park-42-hectares-transferred-to-midc-sdj87" target="_blank" rel="noopener noreferrer">
+                    <span className="news-card-source">Sakal</span>
+                    <h3>Maharashtra cabinet approves Satara IT Park</h3>
+                    <p>42 hectares earmarked for MIDC; new employment opportunities</p>
+                    <span className="text-link">Read article</span>
+                  </a>
+                </div>
+              </div>
               <div className="statement-bottom">
                 <p>Dreamland works across property sales, selected land opportunities and stalled-project recovery. Our approach is to understand the situation, clarify the available information, coordinate the work required and communicate the next steps responsibly.</p>
                 <TextLink to="/about">About Dreamland</TextLink>
               </div>
+              <p className="news-disclaimer">Independent coverage does not imply endorsement of Dreamland or guarantee property appreciation, investment returns or employment outcomes.</p>
             </Reveal>
           </div>
         </div>
@@ -374,37 +395,6 @@ function HomePage() {
               View All Properties
             </CTAButton>
           </div>
-        </div>
-      </section>
-
-      <section className="section news-showcase" id="independent-news" aria-labelledby="news-title">
-        <img src={itParkArt} alt="" aria-hidden="true" loading="lazy" width={1920} height={1024} className="statement-art" />
-        <div className="container news-layout">
-          <Reveal>
-            <div className="news-positioning">
-              <Eyebrow>Satara's upcoming IT Towers Park</Eyebrow>
-              <h2 id="news-title">Real-estate decisions need <em>more than a promise.</em></h2>
-              <p>Independent reporting on Satara's IT Park. Review the original coverage alongside your own property-specific checks.</p>
-            </div>
-          </Reveal>
-          <Reveal delay={1}>
-            <div className="news-strip">
-              <div className="news-strip-head"><span>Independent News Coverage</span></div>
-              <div className="news-cards">
-                <a className="news-card" href="https://pudhari.news/maharashtra/satara/satara-it-park-land-transfer-in-final-stages-employment-boost-dc95" target="_blank" rel="noopener noreferrer">
-                  <span className="news-card-source">Pudhari News</span>
-                  <h3>Satara IT Park land transfer in final stages</h3>
-                  <span className="text-link">Read article</span>
-                </a>
-                <a className="news-card" href="https://www.esakal.com/satara/maharashtra-cabinet-approves-satara-it-park-42-hectares-transferred-to-midc-sdj87" target="_blank" rel="noopener noreferrer">
-                  <span className="news-card-source">Sakal</span>
-                  <h3>Maharashtra cabinet approves Satara IT Park</h3>
-                  <span className="text-link">Read article</span>
-                </a>
-              </div>
-              <p className="news-disclaimer">Independent coverage does not imply endorsement of Dreamland or guarantee property appreciation, investment returns or employment outcomes.</p>
-            </div>
-          </Reveal>
         </div>
       </section>
 
