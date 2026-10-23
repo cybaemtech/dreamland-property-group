@@ -15,9 +15,9 @@ describe("content publish gating", () => {
     );
   });
 
-  it("never lists the withheld draft property (ready-homes)", () => {
-    expect(properties.map((p) => p.slug)).toContain("ready-homes");
-    expect(listedProperties.map((p) => p.slug)).not.toContain("ready-homes");
+  it("never lists the withheld draft property (ready-to-move-homes)", () => {
+    expect(properties.map((p) => p.slug)).toContain("ready-to-move-homes");
+    expect(listedProperties.map((p) => p.slug)).not.toContain("ready-to-move-homes");
   });
 
   it("publishes no land parcels until one is verified", () => {
