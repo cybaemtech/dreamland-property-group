@@ -216,17 +216,14 @@ function HomePage() {
               <p className="statement-note">
                 Exploring Satara from Pune or Mumbai? Start with a virtual conversation, request the available property
                 information, and plan a guided site visit when you are ready.
-                <br />
-                <br />
-                <br />
-                <div className="statement-copy">
-                  <h2>
-                    <em>Local trust.</em>
-                    <br />
-                    Wider reach.
-                  </h2>
-                </div>
               </p>
+              <div className="statement-copy statement-copy-aside">
+                <h2>
+                  <em>Local trust.</em>
+                  <br />
+                  Wider reach.
+                </h2>
+              </div>
             </Reveal>
           </aside>
           <div className="statement-copy">
