@@ -3268,7 +3268,7 @@
 .trust-showcase .news-card { padding: 20px 24px; min-height: 205px; gap: 12px; background: color-mix(in oklab, var(--cream) 85%, transparent); }
 .trust-showcase .news-card h3 { font-size: 1.65rem; line-height: 1.06; }
 .trust-showcase .news-card p { font-size: .9rem; line-height: 1.45; }
-.trust-showcase .statement-art { width: 66%; right: -12%; top: 25px; bottom: auto; opacity: .085; }
+.trust-showcase .statement-art { width: 66%; right: -12%; top: 25px; bottom: auto; opacity: .22; filter: contrast(1.15) saturate(.6); }
 .trust-showcase .statement-bottom { margin-top: 24px; padding-top: 18px; gap: 40px; }
 .trust-showcase .statement-bottom p { max-width: 620px; }
 .trust-showcase .news-disclaimer { margin-top: 14px; font-size: .7rem; }
@@ -3293,6 +3293,6 @@
   .trust-promise { font-size: 1rem; }
   .trust-showcase .news-cards { grid-template-columns: minmax(0, 1fr); }
   .trust-showcase .news-card { min-height: 200px; padding: 24px; }
-  .trust-showcase .statement-art { width: 160%; right: -65%; top: 380px; opacity: .06; }
+  .trust-showcase .statement-art { width: 160%; right: -65%; top: 380px; opacity: .17; filter: contrast(1.15) saturate(.6); }
   .trust-showcase .statement-bottom { align-items: start; gap: 22px; }
 }
