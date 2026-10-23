@@ -3801,7 +3801,7 @@
   right: -12%;
   top: 25px;
   bottom: auto;
-  opacity: 0.42;
+  opacity: 1;
   filter: contrast(1.35) saturate(0.6);
 }
 .trust-showcase .statement-bottom {
@@ -3885,7 +3885,7 @@
     width: 160%;
     right: -65%;
     top: 380px;
-    opacity: 0.6;
+    opacity: 1;
     filter: contrast(1.35) saturate(0.6);
   }
   .trust-showcase .statement-bottom {
