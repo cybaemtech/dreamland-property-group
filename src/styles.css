@@ -943,10 +943,10 @@
 /* --- Statement: subtle IT-park line-art backdrop --- */
 .statement-art {
   position: absolute;
-  top: 4%;
-  right: -6%;
-  width: min(60vw, 940px);
-  opacity: 0.42;
+  top: 6%;
+  right: -10%;
+  width: min(54vw, 860px);
+  opacity: 0.3;
   mix-blend-mode: multiply;
   pointer-events: none;
   -webkit-mask-image: linear-gradient(to left, #000 55%, transparent 98%);
