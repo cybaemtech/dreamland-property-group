@@ -14,8 +14,10 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ChannelPartnersRouteImport } from './routes/channel-partners'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LandIndustrialRouteImport } from './routes/land-industrial'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ProjectRevivalRouteImport } from './routes/project-revival'
 import { Route as PropertiesRouteImport } from './routes/properties'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as LandIndustrialSlugRouteImport } from './routes/land-industrial.$slug'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 import { Route as ApiPublicEnquiriesRouteImport } from './routes/api/public/enquiries'
@@ -46,6 +48,11 @@ const LandIndustrialRoute = LandIndustrialRouteImport.update({
   path: '/land-industrial',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectRevivalRoute = ProjectRevivalRouteImport.update({
   id: '/project-revival',
   path: '/project-revival',
@@ -54,6 +61,11 @@ const ProjectRevivalRoute = ProjectRevivalRouteImport.update({
 const PropertiesRoute = PropertiesRouteImport.update({
   id: '/properties',
   path: '/properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LandIndustrialSlugRoute = LandIndustrialSlugRouteImport.update({
@@ -84,8 +96,10 @@ export interface FileRoutesByFullPath {
   '/channel-partners': typeof ChannelPartnersRoute
   '/contact': typeof ContactRoute
   '/land-industrial': typeof LandIndustrialRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
+  '/terms': typeof TermsRoute
   '/land-industrial/$slug': typeof LandIndustrialSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
@@ -97,8 +111,10 @@ export interface FileRoutesByTo {
   '/channel-partners': typeof ChannelPartnersRoute
   '/contact': typeof ContactRoute
   '/land-industrial': typeof LandIndustrialRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
+  '/terms': typeof TermsRoute
   '/land-industrial/$slug': typeof LandIndustrialSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
@@ -111,8 +127,10 @@ export interface FileRoutesById {
   '/channel-partners': typeof ChannelPartnersRoute
   '/contact': typeof ContactRoute
   '/land-industrial': typeof LandIndustrialRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
+  '/terms': typeof TermsRoute
   '/land-industrial/$slug': typeof LandIndustrialSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
@@ -126,8 +144,10 @@ export interface FileRouteTypes {
     | '/channel-partners'
     | '/contact'
     | '/land-industrial'
+    | '/privacy-policy'
     | '/project-revival'
     | '/properties'
+    | '/terms'
     | '/land-industrial/$slug'
     | '/properties/$slug'
     | '/api/public/enquiries'
@@ -139,8 +159,10 @@ export interface FileRouteTypes {
     | '/channel-partners'
     | '/contact'
     | '/land-industrial'
+    | '/privacy-policy'
     | '/project-revival'
     | '/properties'
+    | '/terms'
     | '/land-industrial/$slug'
     | '/properties/$slug'
     | '/api/public/enquiries'
@@ -152,8 +174,10 @@ export interface FileRouteTypes {
     | '/channel-partners'
     | '/contact'
     | '/land-industrial'
+    | '/privacy-policy'
     | '/project-revival'
     | '/properties'
+    | '/terms'
     | '/land-industrial/$slug'
     | '/properties/$slug'
     | '/api/public/enquiries'
@@ -166,8 +190,10 @@ export interface RootRouteChildren {
   ChannelPartnersRoute: typeof ChannelPartnersRoute
   ContactRoute: typeof ContactRoute
   LandIndustrialRoute: typeof LandIndustrialRouteWithChildren
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ProjectRevivalRoute: typeof ProjectRevivalRouteWithChildren
   PropertiesRoute: typeof PropertiesRouteWithChildren
+  TermsRoute: typeof TermsRoute
   ApiPublicEnquiriesRoute: typeof ApiPublicEnquiriesRoute
 }
 
@@ -208,6 +234,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LandIndustrialRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/project-revival': {
       id: '/project-revival'
       path: '/project-revival'
@@ -220,6 +253,13 @@ declare module '@tanstack/react-router' {
       path: '/properties'
       fullPath: '/properties'
       preLoaderRoute: typeof PropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/land-industrial/$slug': {
@@ -295,8 +335,10 @@ const rootRouteChildren: RootRouteChildren = {
   ChannelPartnersRoute: ChannelPartnersRoute,
   ContactRoute: ContactRoute,
   LandIndustrialRoute: LandIndustrialRouteWithChildren,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ProjectRevivalRoute: ProjectRevivalRouteWithChildren,
   PropertiesRoute: PropertiesRouteWithChildren,
+  TermsRoute: TermsRoute,
   ApiPublicEnquiriesRoute: ApiPublicEnquiriesRoute,
 }
 export const routeTree = rootRouteImport
