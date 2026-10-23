@@ -530,7 +530,7 @@
 
 .hero {
   position: relative;
-  min-height: max(730px, min(900px, calc(100svh - 54px))));
+  min-height: max(730px, min(900px, calc(100svh - 54px)));
   display: flex;
   align-items: stretch;
   overflow: hidden;
