@@ -1283,6 +1283,10 @@
   border-bottom: 1px solid color-mix(in oklab, var(--ink) 22%, transparent);
 }
 
+.buyer-steps.four {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .buyer-step {
   padding: 29px 30px 35px 0;
 }
@@ -1527,6 +1531,10 @@
   grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid color-mix(in oklab, var(--cream) 25%, transparent);
   border-bottom: 1px solid color-mix(in oklab, var(--cream) 25%, transparent);
+}
+
+.revival-steps.six {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .revival-step {
