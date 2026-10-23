@@ -894,6 +894,10 @@
   padding-top: 14px;
 }
 
+.statement-copy-aside {
+  margin-top: 44px;
+}
+
 .statement-aside .eyebrow {
   color: var(--olive);
 }
