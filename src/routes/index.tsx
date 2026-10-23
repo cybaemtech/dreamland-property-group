@@ -44,6 +44,8 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    scripts: [
       {
         // Organization structured data — only visible, factual information.
         type: "application/ld+json",
