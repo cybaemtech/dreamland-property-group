@@ -206,10 +206,13 @@ function HomePage() {
                 <br />
                 <br />
                 <br />
-                <h2>
-                  Local trust. <br />
-                  Wider reach.
-                </h2>
+                <div className="statement-copy">
+                  <h2>
+                    <em>Local trust.</em>
+                    <br />
+                    Wider reach.
+                  </h2>{" "}
+                </div>
               </p>
             </Reveal>
           </aside>
