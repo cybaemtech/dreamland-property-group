@@ -10,8 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LandIndustrialRouteImport } from './routes/land-industrial'
 import { Route as ProjectRevivalRouteImport } from './routes/project-revival'
 import { Route as PropertiesRouteImport } from './routes/properties'
+import { Route as LandIndustrialSlugRouteImport } from './routes/land-industrial.$slug'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 import { Route as ApiPublicEnquiriesRouteImport } from './routes/api/public/enquiries'
 import { Route as ProjectRevivalCaseStudiesSlugRouteImport } from './routes/project-revival.case-studies.$slug'
@@ -19,6 +21,11 @@ import { Route as ProjectRevivalCaseStudiesSlugRouteImport } from './routes/proj
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandIndustrialRoute = LandIndustrialRouteImport.update({
+  id: '/land-industrial',
+  path: '/land-industrial',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectRevivalRoute = ProjectRevivalRouteImport.update({
@@ -30,6 +37,11 @@ const PropertiesRoute = PropertiesRouteImport.update({
   id: '/properties',
   path: '/properties',
   getParentRoute: () => rootRouteImport,
+} as any)
+const LandIndustrialSlugRoute = LandIndustrialSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => LandIndustrialRoute,
 } as any)
 const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
   id: '/$slug',
@@ -50,16 +62,20 @@ const ProjectRevivalCaseStudiesSlugRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/land-industrial': typeof LandIndustrialRouteWithChildren
   '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
+  '/land-industrial/$slug': typeof LandIndustrialSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
   '/project-revival/case-studies/$slug': typeof ProjectRevivalCaseStudiesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/land-industrial': typeof LandIndustrialRouteWithChildren
   '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
+  '/land-industrial/$slug': typeof LandIndustrialSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
   '/project-revival/case-studies/$slug': typeof ProjectRevivalCaseStudiesSlugRoute
@@ -67,8 +83,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/land-industrial': typeof LandIndustrialRouteWithChildren
   '/project-revival': typeof ProjectRevivalRouteWithChildren
   '/properties': typeof PropertiesRouteWithChildren
+  '/land-industrial/$slug': typeof LandIndustrialSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
   '/project-revival/case-studies/$slug': typeof ProjectRevivalCaseStudiesSlugRoute
@@ -77,24 +95,30 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/land-industrial'
     | '/project-revival'
     | '/properties'
+    | '/land-industrial/$slug'
     | '/properties/$slug'
     | '/api/public/enquiries'
     | '/project-revival/case-studies/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/land-industrial'
     | '/project-revival'
     | '/properties'
+    | '/land-industrial/$slug'
     | '/properties/$slug'
     | '/api/public/enquiries'
     | '/project-revival/case-studies/$slug'
   id:
     | '__root__'
     | '/'
+    | '/land-industrial'
     | '/project-revival'
     | '/properties'
+    | '/land-industrial/$slug'
     | '/properties/$slug'
     | '/api/public/enquiries'
     | '/project-revival/case-studies/$slug'
@@ -102,6 +126,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LandIndustrialRoute: typeof LandIndustrialRouteWithChildren
   ProjectRevivalRoute: typeof ProjectRevivalRouteWithChildren
   PropertiesRoute: typeof PropertiesRouteWithChildren
   ApiPublicEnquiriesRoute: typeof ApiPublicEnquiriesRoute
@@ -114,6 +139,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/land-industrial': {
+      id: '/land-industrial'
+      path: '/land-industrial'
+      fullPath: '/land-industrial'
+      preLoaderRoute: typeof LandIndustrialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/project-revival': {
@@ -129,6 +161,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/properties'
       preLoaderRoute: typeof PropertiesRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/land-industrial/$slug': {
+      id: '/land-industrial/$slug'
+      path: '/$slug'
+      fullPath: '/land-industrial/$slug'
+      preLoaderRoute: typeof LandIndustrialSlugRouteImport
+      parentRoute: typeof LandIndustrialRoute
     }
     '/properties/$slug': {
       id: '/properties/$slug'
@@ -153,6 +192,18 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface LandIndustrialRouteChildren {
+  LandIndustrialSlugRoute: typeof LandIndustrialSlugRoute
+}
+
+const LandIndustrialRouteChildren: LandIndustrialRouteChildren = {
+  LandIndustrialSlugRoute: LandIndustrialSlugRoute,
+}
+
+const LandIndustrialRouteWithChildren = LandIndustrialRoute._addFileChildren(
+  LandIndustrialRouteChildren,
+)
 
 interface ProjectRevivalRouteChildren {
   ProjectRevivalCaseStudiesSlugRoute: typeof ProjectRevivalCaseStudiesSlugRoute
@@ -180,6 +231,7 @@ const PropertiesRouteWithChildren = PropertiesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LandIndustrialRoute: LandIndustrialRouteWithChildren,
   ProjectRevivalRoute: ProjectRevivalRouteWithChildren,
   PropertiesRoute: PropertiesRouteWithChildren,
   ApiPublicEnquiriesRoute: ApiPublicEnquiriesRoute,

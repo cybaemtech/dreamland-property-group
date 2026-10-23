@@ -13,7 +13,13 @@ interface PageHeroProps {
   intro: string;
   image?: { src: string; alt: string };
   breadcrumbs?: Crumb[];
-  actions?: { label: string; to: ToPathOption; variant?: "gold" | "outline" }[];
+  actions?: {
+    label: string;
+    to?: ToPathOption;
+    /** In-page anchor (e.g. "#enquire") — rendered as a plain link. */
+    anchor?: string;
+    variant?: "gold" | "outline";
+  }[];
 }
 
 /** Inner-page cinematic hero, matching the reference design language. */
@@ -44,11 +50,19 @@ export function PageHero({ eyebrow, title, intro, image, breadcrumbs, actions }:
         <p className="page-hero-intro">{intro}</p>
         {actions && actions.length > 0 && (
           <div className="page-hero-actions">
-            {actions.map((a, i) => (
-              <CTAButton key={i} to={a.to} variant={a.variant ?? "gold"}>
-                {a.label}
-              </CTAButton>
-            ))}
+            {actions.map((a, i) =>
+              a.anchor ? (
+                <a key={i} href={a.anchor} className={`btn btn-${a.variant ?? "gold"}`}>
+                  {a.label}
+                </a>
+              ) : (
+                a.to && (
+                  <CTAButton key={i} to={a.to} variant={a.variant ?? "gold"}>
+                    {a.label}
+                  </CTAButton>
+                )
+              ),
+            )}
           </div>
         )}
       </div>
