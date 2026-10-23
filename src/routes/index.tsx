@@ -261,7 +261,7 @@ function HomePage() {
                       Reporting on the land-transfer process and the employment activity anticipated around the IT
                       Park.
                     </p>
-                    <span className="text-link">Read article ↗</span>
+                    <span className="text-link">Read article</span>
                   </a>
                   <a
                     className="news-card"
@@ -272,7 +272,7 @@ function HomePage() {
                     <span className="news-card-source">Sakal</span>
                     <h3>Maharashtra cabinet approves Satara IT Park</h3>
                     <p>42 hectares earmarked for MIDC, with new employment opportunities reported for the region.</p>
-                    <span className="text-link">Read article ↗</span>
+                    <span className="text-link">Read article</span>
                   </a>
                 </div>
               </div>
