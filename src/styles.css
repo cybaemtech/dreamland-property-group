@@ -894,6 +894,10 @@
   padding-top: 14px;
 }
 
+.statement-copy-aside {
+  margin-top: 44px;
+}
+
 .statement-aside .eyebrow {
   color: var(--olive);
 }
@@ -938,6 +942,99 @@
   color: var(--ink-muted);
   font-size: 0.9rem;
   line-height: 1.85;
+}
+
+/* --- Statement: subtle IT-park line-art backdrop --- */
+.statement-art {
+  position: absolute;
+  top: 6%;
+  right: -10%;
+  width: min(54vw, 860px);
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to left, #000 55%, transparent 98%);
+  mask-image: linear-gradient(to left, #000 55%, transparent 98%);
+}
+
+/* --- Statement: independent news coverage --- */
+.news-strip {
+  position: relative;
+  z-index: 1;
+  margin-top: 42px;
+}
+
+.news-strip-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.news-strip-head span {
+  color: var(--night);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.news-strip-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.news-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 32px 24px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--cream) 55%, transparent);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.news-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.news-card-source {
+  color: var(--ink-muted);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.news-card h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.news-card p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.84rem;
+  line-height: 1.75;
+}
+
+.news-card .text-link {
+  margin-top: auto;
+  padding-top: 6px;
 }
 
 /* ============================= Journeys ============================= */
@@ -2715,6 +2812,24 @@
     align-items: flex-start;
     gap: 23px;
     margin-top: 37px;
+  }
+  .statement-art {
+    top: auto;
+    right: -24%;
+    bottom: -4%;
+    width: 130vw;
+    max-width: none;
+    opacity: 0.28;
+  }
+  .news-strip {
+    margin-top: 32px;
+  }
+  .news-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .news-card {
+    padding: 22px 22px 18px;
   }
   .journey-grid {
     grid-template-columns: 1fr;
