@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      enquiries: {
+        Row: {
+          attribution: Json | null
+          created_at: string
+          crm_synced_at: string | null
+          form_type: string
+          id: string
+          page_path: string | null
+          payload: Json
+          status: string
+        }
+        Insert: {
+          attribution?: Json | null
+          created_at?: string
+          crm_synced_at?: string | null
+          form_type: string
+          id?: string
+          page_path?: string | null
+          payload: Json
+          status?: string
+        }
+        Update: {
+          attribution?: Json | null
+          created_at?: string
+          crm_synced_at?: string | null
+          form_type?: string
+          id?: string
+          page_path?: string | null
+          payload?: Json
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
