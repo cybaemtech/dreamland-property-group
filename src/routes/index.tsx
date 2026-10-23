@@ -211,7 +211,7 @@ function HomePage() {
                     <em>Local trust.</em>
                     <br />
                     Wider reach.
-                  </h2>{" "}
+                  </h2>
                 </div>
               </p>
             </Reveal>
