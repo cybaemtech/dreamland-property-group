@@ -209,7 +209,7 @@ function HomePage() {
             <Reveal>
               <Eyebrow>Satara roots. Wider reach.</Eyebrow>
               <p className="statement-note">Exploring Satara from Pune or Mumbai? Start with a virtual conversation, request the available property information, and plan a guided site visit when you are ready.</p>
-              <p className="trust-local"><span>Local<br />trust.</span><br />Wider<br />reach.</p>
+              <p className="trust-local"><span>Local<br /> trust.</span><br />Wider<br /> reach.</p>
             </Reveal>
           </aside>
           <div className="statement-copy">

@@ -3273,6 +3273,7 @@
 .trust-showcase .statement-bottom p { max-width: 620px; }
 .trust-showcase .news-disclaimer { margin-top: 14px; font-size: .7rem; }
 .trust-showcase .news-card:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 4px; }
+.trust-showcase .news-card .text-link { text-transform: none; font-size: .875rem; }
 @media (max-width: 1080px) {
   .trust-showcase .statement-grid { grid-template-columns: 230px minmax(0, 1fr); gap: 40px; }
   .home-editorial .trust-showcase .statement-copy h2 { font-size: 3.8rem; }
