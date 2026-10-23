@@ -86,7 +86,7 @@ function HomePage() {
                 <span>Satara's</span>
               </span>
               <span className="line">
-                <span>next&nbsp;Chapter</span>
+                <span>next&nbsp;chapter</span>
               </span>
               <span className="line">
                 <span><em>chapter</em> starts here!</span>
