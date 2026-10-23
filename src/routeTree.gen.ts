@@ -10,42 +10,100 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectRevivalRouteImport } from './routes/project-revival'
+import { Route as PropertiesRouteImport } from './routes/properties'
+import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 import { Route as ApiPublicEnquiriesRouteImport } from './routes/api/public/enquiries'
+import { Route as ProjectRevivalCaseStudiesSlugRouteImport } from './routes/project-revival.case-studies.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectRevivalRoute = ProjectRevivalRouteImport.update({
+  id: '/project-revival',
+  path: '/project-revival',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertiesRoute = PropertiesRouteImport.update({
+  id: '/properties',
+  path: '/properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => PropertiesRoute,
+} as any)
 const ApiPublicEnquiriesRoute = ApiPublicEnquiriesRouteImport.update({
   id: '/api/public/enquiries',
   path: '/api/public/enquiries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectRevivalCaseStudiesSlugRoute =
+  ProjectRevivalCaseStudiesSlugRouteImport.update({
+    id: '/case-studies/$slug',
+    path: '/case-studies/$slug',
+    getParentRoute: () => ProjectRevivalRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/project-revival': typeof ProjectRevivalRouteWithChildren
+  '/properties': typeof PropertiesRouteWithChildren
+  '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
+  '/project-revival/case-studies/$slug': typeof ProjectRevivalCaseStudiesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/project-revival': typeof ProjectRevivalRouteWithChildren
+  '/properties': typeof PropertiesRouteWithChildren
+  '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
+  '/project-revival/case-studies/$slug': typeof ProjectRevivalCaseStudiesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/project-revival': typeof ProjectRevivalRouteWithChildren
+  '/properties': typeof PropertiesRouteWithChildren
+  '/properties/$slug': typeof PropertiesSlugRoute
   '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
+  '/project-revival/case-studies/$slug': typeof ProjectRevivalCaseStudiesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/enquiries'
+  fullPaths:
+    | '/'
+    | '/project-revival'
+    | '/properties'
+    | '/properties/$slug'
+    | '/api/public/enquiries'
+    | '/project-revival/case-studies/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/enquiries'
-  id: '__root__' | '/' | '/api/public/enquiries'
+  to:
+    | '/'
+    | '/project-revival'
+    | '/properties'
+    | '/properties/$slug'
+    | '/api/public/enquiries'
+    | '/project-revival/case-studies/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/project-revival'
+    | '/properties'
+    | '/properties/$slug'
+    | '/api/public/enquiries'
+    | '/project-revival/case-studies/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjectRevivalRoute: typeof ProjectRevivalRouteWithChildren
+  PropertiesRoute: typeof PropertiesRouteWithChildren
   ApiPublicEnquiriesRoute: typeof ApiPublicEnquiriesRoute
 }
 
@@ -58,6 +116,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/project-revival': {
+      id: '/project-revival'
+      path: '/project-revival'
+      fullPath: '/project-revival'
+      preLoaderRoute: typeof ProjectRevivalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/properties': {
+      id: '/properties'
+      path: '/properties'
+      fullPath: '/properties'
+      preLoaderRoute: typeof PropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/properties/$slug': {
+      id: '/properties/$slug'
+      path: '/$slug'
+      fullPath: '/properties/$slug'
+      preLoaderRoute: typeof PropertiesSlugRouteImport
+      parentRoute: typeof PropertiesRoute
+    }
     '/api/public/enquiries': {
       id: '/api/public/enquiries'
       path: '/api/public/enquiries'
@@ -65,11 +144,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicEnquiriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/project-revival/case-studies/$slug': {
+      id: '/project-revival/case-studies/$slug'
+      path: '/case-studies/$slug'
+      fullPath: '/project-revival/case-studies/$slug'
+      preLoaderRoute: typeof ProjectRevivalCaseStudiesSlugRouteImport
+      parentRoute: typeof ProjectRevivalRoute
+    }
   }
 }
 
+interface ProjectRevivalRouteChildren {
+  ProjectRevivalCaseStudiesSlugRoute: typeof ProjectRevivalCaseStudiesSlugRoute
+}
+
+const ProjectRevivalRouteChildren: ProjectRevivalRouteChildren = {
+  ProjectRevivalCaseStudiesSlugRoute: ProjectRevivalCaseStudiesSlugRoute,
+}
+
+const ProjectRevivalRouteWithChildren = ProjectRevivalRoute._addFileChildren(
+  ProjectRevivalRouteChildren,
+)
+
+interface PropertiesRouteChildren {
+  PropertiesSlugRoute: typeof PropertiesSlugRoute
+}
+
+const PropertiesRouteChildren: PropertiesRouteChildren = {
+  PropertiesSlugRoute: PropertiesSlugRoute,
+}
+
+const PropertiesRouteWithChildren = PropertiesRoute._addFileChildren(
+  PropertiesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjectRevivalRoute: ProjectRevivalRouteWithChildren,
+  PropertiesRoute: PropertiesRouteWithChildren,
   ApiPublicEnquiriesRoute: ApiPublicEnquiriesRoute,
 }
 export const routeTree = rootRouteImport
