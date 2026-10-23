@@ -44,6 +44,7 @@ export const Route = createFileRoute("/project-revival/")({
           "Understand our structured revival approach: assess, clarify, evaluate feasibility, align stakeholders, define a plan and track progress — with expectations stated honestly.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/project-revival" }],
   }),

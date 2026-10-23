@@ -5,3 +5,4 @@
 - All colour, typography and shared section styles are tokens/classes in `src/styles.css`; components never hardcode colours.
 - Content records in `src/content/*` follow the publish gating in `src/content/types.ts` — only `publishStatus: "published"` and `availableForEnquiry` records reach public pages; unverified facts are labelled with `TBC` or "Verify", never invented. The gates are asserted in `src/test/content-gating.test.ts`.
 - Lead forms post to `src/routes/api/public/enquiries.ts` (Zod validation, consent, honeypot, rate limit) and store into `public.enquiries`; CRM forwarding is intentionally unwired until Dreamland supplies CRM credentials.
+- Homepage-specific editorial refinements are scoped under `.home-editorial`; the reusable property rail owns scroll controls and the homepage reuses the existing `LeadForm` contact configuration. Reason: visual refinement must not fork enquiry handling or disrupt detail-page layouts.

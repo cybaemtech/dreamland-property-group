@@ -1,13 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import heroImage from "@/assets/hero-architecture.jpg";
+import heroAsset from "@/assets/reference-architecture.asset.json";
+import craftImage from "@/assets/craft-detail.jpg";
 import journeyProperties from "@/assets/journey-properties.jpg";
 import journeyRevival from "@/assets/journey-revival.jpg";
 import journeyLand from "@/assets/journey-land.jpg";
 import landImage from "@/assets/land-parcel.jpg";
+import itParkArt from "@/assets/it-park-line-art.png";
 import { Reveal } from "@/components/reveal";
-import { CTAButton, CtaBand, EmptyState, Eyebrow, IllustrativeNote, TextLink } from "@/components/bits";
-import { PropertyCard } from "@/components/cards";
+import { CTAButton, EmptyState, Eyebrow, IllustrativeNote, TextLink } from "@/components/bits";
+import { PropertyRail } from "@/components/property-rail";
+import { LeadForm } from "@/components/lead-form";
+import { contactForm } from "@/content/forms";
 import { listedProperties } from "@/content/properties";
 import { track, events } from "@/lib/analytics";
 
@@ -111,12 +115,12 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
   return (
-    <main id="top">
+    <main id="top" className="home-editorial">
       {/* ============ Hero ============ */}
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-media">
           <img
-            src={heroImage}
+            src={heroAsset.url}
             alt="Contemporary residential architecture in warm evening light — illustrative image"
             fetchPriority="high"
             width={1920}
@@ -135,7 +139,7 @@ function HomePage() {
                 <span>
                   next&nbsp;
                   <em>
-                    <i>chapter</i>
+                    chapter
                   </em>
                 </span>
               </span>
@@ -144,7 +148,7 @@ function HomePage() {
               </span>
             </h1>
             <p className="hero-description">
-              Explore Satara property opportunities from wherever you are&nbsp; whether you are considering a home,
+              Explore Satara property opportunities from wherever you are—whether you are considering a home,
               commercial space or a property investment. Request current project information, speak with the team
               virtually and plan a guided visit when an opportunity fits your needs.
             </p>
@@ -198,50 +202,42 @@ function HomePage() {
       </div>
 
       {/* ============ Statement ============ */}
-      <section className="statement" id="intro">
+      <section className="statement trust-showcase" id="intro" aria-labelledby="trust-title">
+        <img src={itParkArt} alt="" aria-hidden="true" loading="lazy" width={1920} height={1024} className="statement-art" />
         <div className="container statement-grid">
           <aside className="statement-aside">
             <Reveal>
               <Eyebrow>Satara roots. Wider reach.</Eyebrow>
-              <p className="statement-note">
-                Exploring Satara from Pune or Mumbai? Start with a virtual conversation, request the available property
-                information, and plan a guided site visit when you are ready.
-                <br />
-                <br />
-                <br />
-                <div className="statement-copy">
-                  <h2>
-                    <em>Local trust.</em>
-                    <br />
-                    Wider reach.
-                  </h2>
-                </div>
-              </p>
+              <p className="statement-note">Exploring Satara from Pune or Mumbai? Start with a virtual conversation, request the available property information, and plan a guided site visit when you are ready.</p>
+              <p className="trust-local"><span>Local<br /> trust.</span><br />Wider<br /> reach.</p>
             </Reveal>
           </aside>
           <div className="statement-copy">
             <Reveal delay={1}>
-              <h2>
-                A perfect investment surrounding Satara's
-                <br />
-                <em>
-                  <i>upcoming</i>
-                </em>
-                <br />
-                IT Towers Park!
-              </h2>
-              <br />
-              <h3>
-                Real-estate decisions need <em>more than a promise.</em>
-              </h3>
+              <h2 id="trust-title">A perfect investment<br className="trust-desktop-break" /> surrounding Satara's<br className="trust-desktop-break" /> <em>upcoming</em><br />IT Towers Park!</h2>
+              <p className="trust-promise"><span>Real-estate decisions need <em>more than a promise.</em></span></p>
+              <div className="news-strip" id="independent-news">
+                <div className="news-strip-head"><span>Independent News Coverage</span></div>
+                <div className="news-cards">
+                  <a className="news-card" href="https://pudhari.news/maharashtra/satara/satara-it-park-land-transfer-in-final-stages-employment-boost-dc95" target="_blank" rel="noopener noreferrer">
+                    <span className="news-card-source">Pudhari News</span>
+                    <h3>Satara IT Park land transfer in final stages</h3>
+                    <p>Reporting on the land-transfer process and expected local employment</p>
+                    <span className="text-link">Read article</span>
+                  </a>
+                  <a className="news-card" href="https://www.esakal.com/satara/maharashtra-cabinet-approves-satara-it-park-42-hectares-transferred-to-midc-sdj87" target="_blank" rel="noopener noreferrer">
+                    <span className="news-card-source">Sakal</span>
+                    <h3>Maharashtra cabinet approves Satara IT Park</h3>
+                    <p>42 hectares earmarked for MIDC; new employment opportunities</p>
+                    <span className="text-link">Read article</span>
+                  </a>
+                </div>
+              </div>
               <div className="statement-bottom">
-                <p>
-                  Dreamland works across property sales, selected land opportunities and stalled-project recovery. Our
-                  approach is to understand the situation, clarify the available information, coordinate the work
-                  required and communicate the next steps responsibly.
-                </p>
+                <p>Dreamland works across property sales, selected land opportunities and stalled-project recovery. Our approach is to understand the situation, clarify the available information, coordinate the work required and communicate the next steps responsibly.</p>
                 <TextLink to="/about">About Dreamland</TextLink>
               </div>
+              <p className="news-disclaimer">Independent coverage does not imply endorsement of Dreamland or guarantee property appreciation, investment returns or employment outcomes.</p>
             </Reveal>
           </div>
         </div>
@@ -384,13 +380,7 @@ function HomePage() {
             </Reveal>
           </div>
           {listedProperties.length > 0 ? (
-            <div className="project-rail" tabIndex={0} aria-label="Currently listed Dreamland properties">
-              {listedProperties.map((property, i) => (
-                <Reveal key={property.slug} delay={(i % 3) as 0 | 1 | 2}>
-                  <PropertyCard property={property} index={i} />
-                </Reveal>
-              ))}
-            </div>
+            <PropertyRail properties={listedProperties} />
           ) : (
             <EmptyState
               heading="New opportunities are being reviewed."
@@ -400,7 +390,7 @@ function HomePage() {
             </EmptyState>
           )}
           <IllustrativeNote />
-          <div style={{ marginTop: 26 }}>
+          <div className="section-footer-actions">
             <CTAButton to="/properties" variant="outline-dark">
               View All Properties
             </CTAButton>
@@ -416,7 +406,7 @@ function HomePage() {
               <div>
                 <Eyebrow>For buyers in Pune &amp; Mumbai</Eyebrow>
                 <h2>
-                  Explore Satara before <em>making the journey.</em>
+                  Make the first visit <em>count.</em>
                 </h2>
               </div>
             </Reveal>
@@ -467,6 +457,30 @@ function HomePage() {
         </div>
       </section>
 
+      <section className="section philosophy" aria-labelledby="confidence-title">
+        <div className="container philosophy-grid">
+          <Reveal>
+            <div className="philosophy-visual">
+              <div className="philosophy-image"><img src={craftImage} alt="Considered stone and timber architectural detailing — illustrative image" loading="lazy" width={1024} height={1280} /></div>
+              <div className="philosophy-stamp"><span>The Dreamland approach</span><strong>Clarity at<br />every step.</strong></div>
+            </div>
+          </Reveal>
+          <Reveal delay={1}>
+            <div className="philosophy-copy">
+              <Eyebrow>The Dreamland approach</Eyebrow>
+              <h2 id="confidence-title">Confidence is built through <em>clarity.</em></h2>
+              <p>We believe buyers and project stakeholders should have a clear view of what is known, what remains to be verified and what happens next.</p>
+              <div className="principles">
+                <div className="principle"><span className="principle-num">01</span><div><strong>Relevant information</strong><p>Clear project details, current availability and practical next steps.</p></div></div>
+                <div className="principle"><span className="principle-num">02</span><div><strong>Evidence before claims</strong><p>Project facts, photographs and regulatory information should be verified before publication.</p></div></div>
+                <div className="principle"><span className="principle-num">03</span><div><strong>A useful conversation</strong><p>Help buyers and project stakeholders reach the right team without unnecessary friction.</p></div></div>
+              </div>
+              <TextLink to="/about">Our approach</TextLink>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ============ Project revival feature ============ */}
       <section className="section revival" id="revival">
         <div className="container">
@@ -475,7 +489,7 @@ function HomePage() {
               <div>
                 <Eyebrow>Dreamland Project Revival</Eyebrow>
                 <h2>
-                  Every stalled project has its own story. The way forward must be <em>specific to it.</em>
+                  Every stalled project has <em>its own story.</em>
                 </h2>
               </div>
             </Reveal>
@@ -544,17 +558,25 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ============ Closing CTA ============ */}
-      <CtaBand
-        title={
-          <>
-            Start with a conversation. <em>Move forward with clarity.</em>
-          </>
-        }
-        body="Whether you are searching for a property, evaluating a land opportunity or discussing a stalled project, tell us what you need. We will help identify the appropriate next step."
-        primary={{ label: "Explore Properties", to: "/properties" }}
-        secondary={{ label: "Contact Dreamland", to: "/contact" }}
-      />
+      <section className="section contact" id="contact">
+        <div className="container contact-grid">
+          <Reveal>
+            <div className="contact-copy">
+              <Eyebrow>Your next step starts here</Eyebrow>
+              <h2>Start with a conversation.<br /><em>Move forward with clarity.</em></h2>
+              <p>Whether you are searching for a property, evaluating a land opportunity or discussing a stalled project, tell us what you need. We will help identify the appropriate next step.</p>
+              <div className="contact-details">
+                <div className="contact-detail"><span aria-hidden="true">↗</span>Property information and guided site visits</div>
+                <div className="contact-detail"><span aria-hidden="true">↗</span>Virtual consultations for Pune &amp; Mumbai buyers</div>
+                <div className="contact-detail"><span aria-hidden="true">↗</span>Land, industrial and stalled-project enquiries</div>
+              </div>
+              <TextLink to="/contact">Contact Dreamland</TextLink>
+              <p className="image-note">Phone, email and office details are awaiting approval. In the meantime, use the enquiry form.</p>
+            </div>
+          </Reveal>
+          <Reveal delay={1}><LeadForm config={contactForm} id="homepage-enquiry" /></Reveal>
+        </div>
+      </section>
     </main>
   );
 }

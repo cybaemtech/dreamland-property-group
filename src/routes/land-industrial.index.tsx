@@ -36,6 +36,7 @@ export const Route = createFileRoute("/land-industrial/")({
           "Land and industrial opportunities disclosed with available documentation. Share your requirement for a structured conversation.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/land-industrial" }],
   }),
