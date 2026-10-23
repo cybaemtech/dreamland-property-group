@@ -219,10 +219,13 @@ function HomePage() {
           <div className="statement-copy">
             <Reveal delay={1}>
               <h2>
-                A perfect investment surrounding next Satara's IT Tower Projects!
-                <br />
-                Real-estate decisions need <em>more than a promise.</em>
+                A perfect investment surrounding Satara's <br />
+                <em>upcoming</em> IT Tower Projects!
               </h2>
+              <br />
+              <h3>
+                Real-estate decisions need <em>more than a promise.</em>
+              </h3>
               <div className="statement-bottom">
                 <p>
                   Dreamland works across property sales, selected land opportunities and stalled-project recovery. Our
