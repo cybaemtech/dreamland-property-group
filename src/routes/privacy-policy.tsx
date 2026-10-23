@@ -15,6 +15,7 @@ export const Route = createFileRoute("/privacy-policy")({
       { property: "og:title", content: "Privacy Policy | Dreamland Developers" },
       { property: "og:description", content: "How enquiry information submitted through this website is handled." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/privacy-policy" }],
   }),

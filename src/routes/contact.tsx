@@ -44,6 +44,7 @@ export const Route = createFileRoute("/contact")({
           "Property enquiries, virtual consultations and guided Satara site visits start with a conversation.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
   }),

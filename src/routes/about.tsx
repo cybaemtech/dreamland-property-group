@@ -39,6 +39,7 @@ export const Route = createFileRoute("/about")({
           "Satara roots, a wider buyer horizon, and a working style built on verified information and structured execution.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
